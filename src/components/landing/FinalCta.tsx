@@ -26,7 +26,7 @@ export const FinalCta = () => {
               </Button>
             </Link>
             <p className="mt-6 text-xs font-mono text-muted-foreground">
-              no signup · no card · just vibes
+              free account · no card · just vibes
             </p>
           </div>
         </div>

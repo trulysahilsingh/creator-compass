@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import heroReel from "@/assets/hero-reel.mp4.asset.json";
 
 export const Hero = () => {
   return (
@@ -55,16 +56,28 @@ export const Hero = () => {
         <div className="relative mt-20 max-w-md mx-auto animate-float">
           <div className="absolute inset-0 bg-gradient-to-tr from-accent/40 to-primary/40 blur-3xl rounded-full" />
           <div className="relative aspect-[9/16] rounded-[2.5rem] border-4 border-foreground/20 bg-card shadow-pop overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-transparent to-accent/20" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 rounded-full bg-background" />
-            <div className="absolute inset-0 p-6 flex flex-col justify-end">
+            {/* Live reel video */}
+            <video
+              src={heroReel.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Subtle vignette over video for legibility */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none" />
+            {/* Notch */}
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 rounded-full bg-background z-10" />
+            {/* Overlayed reel meta */}
+            <div className="absolute inset-0 p-6 flex flex-col justify-end z-10">
               <div className="space-y-2 mb-4">
                 <div className="text-xs font-mono text-primary">@you · 12.3k views</div>
-                <div className="text-foreground font-bold leading-tight">"POV: I posted my first reel and it actually popped off 🔥"</div>
+                <div className="text-foreground font-bold leading-tight drop-shadow-lg">"POV: I posted my first reel and it actually popped off 🔥"</div>
               </div>
               <div className="flex gap-2 text-[10px] font-mono text-muted-foreground">
-                <span className="px-2 py-1 rounded bg-background/60">#firstreel</span>
-                <span className="px-2 py-1 rounded bg-background/60">#contentcreator</span>
+                <span className="px-2 py-1 rounded bg-background/70 backdrop-blur-sm">#firstreel</span>
+                <span className="px-2 py-1 rounded bg-background/70 backdrop-blur-sm">#contentcreator</span>
               </div>
             </div>
           </div>
