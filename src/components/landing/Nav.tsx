@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Nav = () => {
+  const { user } = useAuth();
+  const ctaTo = user ? "/dashboard" : "/auth";
+  const ctaLabel = user ? "Open Studio ↗" : "Try the AI ↗";
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/50">
       <nav className="container flex items-center justify-between h-16">
@@ -18,8 +22,8 @@ export const Nav = () => {
           <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
           <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
         </div>
-        <Link to="/dashboard">
-          <Button variant="hero" size="sm">Try the AI ↗</Button>
+        <Link to={ctaTo}>
+          <Button variant="hero" size="sm">{ctaLabel}</Button>
         </Link>
       </nav>
     </header>
